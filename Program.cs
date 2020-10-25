@@ -2,11 +2,13 @@
 
 namespace HashTable
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            HashTable hashTable = new HashTable();
+            Console.WriteLine($"Frequency of \"{hashTable.WordToCheck}\" is {hashTable.FindFrequencyOfWord()}");
+
         }
     }
 }
