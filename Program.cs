@@ -7,8 +7,10 @@ namespace HashTable
         static void Main(string[] args)
         {
             HashTable hashTable = new HashTable();
+            string wTc = hashTable.WordToCheck;
+            int frequency = hashTable.FindFrequencyOfWord();
 
-            Console.WriteLine($"Frequency of \"{hashTable.WordToCheck}\" is {hashTable.FindFrequencyOfWord()}");
+            Console.WriteLine("Frequency of"+wTc+" is "+frequency);
 
         }
     }
