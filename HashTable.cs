@@ -6,9 +6,10 @@ namespace HashTable
 {
     public class HashTable
     {
-        public string Sentence { get; set; } = "To be or not to be";
-        public string WordToCheck { get; set; } = "be";
-
+        public string Sentence { get; set; } = "Paranoids are not paranoid because they are paranoid but because they keep putting themselves deliberately into paranoid avoidable situations";
+        public string WordToCheck { get; set; } = "paranoid";
+        
+            
         public int FindFrequencyOfWord()
         {
             string[] words = Sentence.Split(' ');
