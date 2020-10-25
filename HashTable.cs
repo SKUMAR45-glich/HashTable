@@ -16,15 +16,15 @@ namespace HashTable
 
             foreach (string word in words)
             {
-                if (map.GetValue(word) == 0)
-                    map.AddValue(word, 1);
+                if (map.Get(word) == 0)
+                    map.Add(word, 1);
                 else
                 {
-                    var freq = map.GetValue(word) + 1;
-                    map.SetValue(word, freq);
+                    var freq = map.Get(word);
+                    map.Set(word, freq);
                 }
             }
-            int count = map.GetValue(WordToCheck);
+            int count = map.Get(WordToCheck);
             return count;
         }
     }
