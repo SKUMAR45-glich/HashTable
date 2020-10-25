@@ -17,15 +17,15 @@ namespace HashTable
 
             foreach (string word in words)
             {
-                if (map.GetValue(word) == 0)
-                    map.AddValue(word, 1);
+                if (map.Get(word) == 0)
+                    map.Add(word, 1);
                 else
                 {
                     var freq = map.GetValue(word) + 1;
-                    map.SetValue(word, freq);
+                    map.Set(word, freq);
                 }
             }
-            int count = map.GetValue(WordToCheck);
+            int count = map.Get(WordToCheck);
             myMap = map;
             return count;
         }
@@ -34,7 +34,8 @@ namespace HashTable
         {
             MyMapNode<string, int> map = myMap;
             map.RemoveValue(wordToRemove);
-            Console.WriteLine($"Frequency of \"{wordToRemove}\" after removal is {map.GetValue(wordToRemove)} ");
+            int count = map.GetValue(wordToRemove);
+            Console.WriteLine("Frequency of+"wordToRemove+ "after removal is "+count);
         }
     }
 }
