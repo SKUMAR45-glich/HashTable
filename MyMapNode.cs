@@ -15,13 +15,13 @@ namespace HashTable
             this.items = new LinkedList<KeyValue<K, V>>[size];
         }
 
-        //-------------------------protected methods----------------------------//
-        protected int GetPositionInArray(K key)
+        
+        public int GetPositionInArray(K key)
         {
             return Math.Abs(key.GetHashCode() % size);
         }
 
-        public LinkedList<KeyValue<K, V>> LinkedListBuilder(int position)
+        public LinkedList<KeyValue<K, V>> GetLinkedList(int position)
         {
             var linkedList = items[position];
             if (linkedList == null)
@@ -33,19 +33,19 @@ namespace HashTable
             return linkedList;
         }
 
-        //----------------------------public methods----------------------------//
-        public void AddValue(K key, V value)
+        
+        public void Add(K key, V value)
         {
             int position = GetPositionInArray(key);
-            var linkedList = LinkedListBuilder(position);
+            var linkedList = GetLinkedList(position);
             var item = new KeyValue<K, V>() { Key = key, Value = value };
             linkedList.AddLast(item);
         }
 
-        public V GetValue(K key)
+        public V Get(K key)
         {
             int position = GetPositionInArray(key);
-            var linkedList = LinkedListBuilder(position);
+            var linkedList = GetLinkedList(position);
             foreach (var item in linkedList)
             {
                 if (item.Key.Equals(key))
@@ -55,10 +55,10 @@ namespace HashTable
             }
             return default(V);
         }
-        public void RemoveValue(K key)
+        public void RemoveKey(K key)
         {
             int position = GetPositionInArray(key);
-            LinkedList<KeyValue<K, V>> linkedList = LinkedListBuilder(position);
+            LinkedList<KeyValue<K, V>> linkedList = GetLinkedList(position);
             bool itemFound = false;
             var foundItem = default(KeyValue<K, V>);
 
@@ -75,10 +75,10 @@ namespace HashTable
                 linkedList.Remove(foundItem);
             }
         }
-        public void SetValue(K key, V value)
+        public void Set(K key, V value)
         {
             int position = GetPositionInArray(key);
-            var linkedList = LinkedListBuilder(position);
+            var linkedList = GetLinkedList(position);
             KeyValue<K, V> temp = new KeyValue<K, V>();
             foreach (var item in linkedList)
             {
