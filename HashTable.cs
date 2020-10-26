@@ -13,7 +13,7 @@ namespace HashTable
         public int FindFrequencyOfWord()
         {
             string[] words = Sentence.Split(' ');
-            MyMapNode<string, int> map = new MyMapNode<string, int>(10);
+            MyMapNode<string, int> map = new MyMapNode<string, int>(20);
 
             foreach (string word in words)
             {
@@ -21,7 +21,7 @@ namespace HashTable
                     map.Add(word, 1);
                 else
                 {
-                    var freq = map.GetValue(word) + 1;
+                    var freq = map.Get(word);
                     map.Set(word, freq);
                 }
             }
@@ -33,7 +33,7 @@ namespace HashTable
         public void RemoveWord(string wordToRemove)
         {
             MyMapNode<string, int> map = myMap;
-            map.RemoveValue(wordToRemove);
+            map.RemoveKey(wordToRemove);
             int count = map.GetValue(wordToRemove);
             Console.WriteLine("Frequency of+"wordToRemove+ "after removal is "+count);
         }
